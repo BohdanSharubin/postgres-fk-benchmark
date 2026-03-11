@@ -1,18 +1,16 @@
 CREATE TABLE users (
-    id BIGSERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     username TEXT NOT NULL,
     email TEXT NOT NULL
 );
 
-CREATE TABLE posts (
-    id BIGSERIAL PRIMARY KEY,
-    author_id BIGINT NOT NULL,
-    text TEXT NOT NULL
+CREATE TABLE likes (
+    id SERIAL PRIMARY KEY,
+    text TEXT
 );
 
-CREATE TABLE likes (
-    user_id BIGINT NOT NULL,
-    post_id BIGINT NOT NULL,
-
-    PRIMARY KEY (user_id, post_id)
+CREATE TABLE users_likes (
+    userId INT NOT NULL,
+    like_id INT NOT NULL,
+    PRIMARY KEY(userId, like_id)
 );

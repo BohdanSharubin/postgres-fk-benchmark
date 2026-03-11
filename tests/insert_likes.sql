@@ -1,10 +1,10 @@
-\set user_id random(1,100000)
-\set post_id random(1,1000000)
+\set userId random(1,1000000)
+\set like_id random(1,1000000)
 
 BEGIN;
 
-INSERT INTO likes(user_id, post_id)
-VALUES (:user_id, :post_id)
+INSERT INTO users_likes (userId, like_id)
+VALUES (:userId, :like_id)
 ON CONFLICT DO NOTHING;
 
-END;
+COMMIT;
