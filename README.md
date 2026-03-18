@@ -110,9 +110,7 @@ For DELETE tests:
 ```bash
 docker build -t pg-fk-benchmark .
 
-docker run --rm \
-  -v $(pwd)/results:/benchmark/results \
-  pg-fk-benchmark
+docker run --rm -v $(pwd)/results:/benchmark/results pg-fk-benchmark
 ```
 
 ---
@@ -122,9 +120,7 @@ docker run --rm \
 ```powershell
 docker build -t pg-fk-benchmark .
 
-docker run --rm `
-  -v ${PWD}\results:/benchmark/results `
-  pg-fk-benchmark
+docker run --rm -v ${PWD}\results:/benchmark/results pg-fk-benchmark
 ```
 
 ---
@@ -134,9 +130,7 @@ docker run --rm `
 ```cmd
 docker build -t pg-fk-benchmark
 
-docker run --rm ^
-  -v %cd%\results:/benchmark/results ^
-  pg-fk-benchmark
+docker run --rm -v %cd%\results:/benchmark/results pg-fk-benchmark
 ```
 
 ---
@@ -211,9 +205,3 @@ Foreign keys provide **data integrity**, but they come with a cost:
 * Potentially large overhead for DELETE and UPDATE
 
 This benchmark helps visualize that trade-off in a controlled environment.
-
----
-
-## License
-
-MIT
