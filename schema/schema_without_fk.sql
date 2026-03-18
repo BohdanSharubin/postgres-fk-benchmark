@@ -14,3 +14,4 @@ CREATE TABLE users_likes (
     like_id INT NOT NULL,
     PRIMARY KEY(userId, like_id)
 );
+create INdex on (userId, like_id)
