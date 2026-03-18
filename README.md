@@ -128,7 +128,7 @@ docker run --rm -v ${PWD}\results:/benchmark/results pg-fk-benchmark
 ### Windows (CMD)
 
 ```cmd
-docker build -t pg-fk-benchmark
+docker build -t pg-fk-benchmark .
 
 docker run --rm -v %cd%\results:/benchmark/results pg-fk-benchmark
 ```
