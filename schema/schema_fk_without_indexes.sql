@@ -14,6 +14,3 @@ CREATE TABLE users_likes (
     like_id INT NOT NULL REFERENCES likes(id),
     PRIMARY KEY(userId, like_id)
 );
-
-CREATE INDEX idx_users_likes_user_id
-ON users_likes(like_id);
