@@ -5,6 +5,5 @@ BEGIN;
 
 INSERT INTO users_likes (userId, like_id)
 VALUES (:userId, :like_id);
----ON CONFLICT DO NOTHING;
 
 COMMIT;
