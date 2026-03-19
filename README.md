@@ -12,6 +12,7 @@ The benchmark compares two scenarios:
 
 * Schema **with foreign keys**
 * Schema **without foreign keys**
+* Schema **with foreign keys and wihtout indexes**
 
 ---
 
@@ -21,6 +22,7 @@ The benchmark compares two scenarios:
 .
 ├── schema/
 │   ├── schema_fk.sql
+│   ├── schema_fk_without_indexes.sql
 │   └── schema_without_fk.sql
 │
 ├── data/
@@ -71,6 +73,12 @@ Each test runs for a fixed duration using `pgbench`.
 * Referential integrity enforced
 * Additional checks on INSERT / DELETE
 
+### With Foreign Keys and without indexes
+
+* Referential integrity enforced
+* Additional checks on INSERT / DELETE
+* No indexes for fast scanning
+
 ### Without Foreign Keys
 
 * No integrity checks
@@ -86,7 +94,7 @@ The following `pgbench` parameters are used:
 | --------- | ------ | ------------------------------------------ |
 | `-c`      | 20     | Number of clients (concurrent connections) |
 | `-j`      | 4      | Worker threads                             |
-| `-T`      | 60     | Test duration (seconds)                    |
+| `-T`      | 180     | Test duration (seconds)                    |
 | `-f`      | script | SQL script to execute                      |
 
 For DELETE tests:
@@ -143,6 +151,8 @@ Benchmark results are saved as text files:
 results/
 ├── fk_insert.txt
 ├── fk_delete.txt
+├── fk_without_indexes_insert.txt
+├── fk_without_indexes_delete.txt
 ├── without_fk_insert.txt
 └── without_fk_delete.txt
 ```
@@ -154,15 +164,6 @@ Each file contains:
 * TPS (transactions per second)
 
 ---
-
-## Example Results
-
-| Test           | Latency              | TPS    |
-| -------------- | -------------------- | ------ |
-| INSERT (FK)    | higher               | lower  |
-| INSERT (NO FK) | lower                | higher |
-| DELETE (FK)    | significantly higher | lower  |
-| DELETE (NO FK) | much faster          | higher |
 
 In some cases, DELETE with FK can be **10–20× slower**, especially without proper indexing.
 
